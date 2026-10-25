@@ -640,11 +640,12 @@ nav a.active{
 .officers article .officer-placeholder{
 
   width:100%;
+  height:auto;
 
-  aspect-ratio:307 / 421;
+  aspect-ratio:4 / 5;
 
   object-fit:cover;
-  object-position:center center;
+  object-position:top;
 
   display:block;
 
