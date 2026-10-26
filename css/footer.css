@@ -275,12 +275,13 @@ footer.sj63-footer {
   }
 }
 
-/* Beat footer img { width:62px } and the height attribute, which otherwise
-   squash this wide wordmark into a tall sliver. */
+/* The generic footer img rule sets width:62px. Combined with the height
+   attribute that turns this wide wordmark into a tall, cropped sliver.
+   Keep the horizontal file at its own ratio and cap the height. */
 footer.sj63-footer a.sj63-ontario-mark,
 .sj63-footer-col a.sj63-ontario-mark{
   display:inline-block;
-  width:240px;
+  width:auto;
   max-width:100%;
   height:auto;
   margin:16px 0 12px;
@@ -290,6 +291,7 @@ footer.sj63-footer a.sj63-ontario-mark,
   line-height:0;
   box-sizing:border-box;
   vertical-align:top;
+  overflow:visible;
 }
 
 footer.sj63-footer a.sj63-ontario-mark:hover,
@@ -301,20 +303,14 @@ footer.sj63-footer a.sj63-ontario-mark:hover,
 footer.sj63-footer .sj63-ontario-mark img,
 .sj63-ontario-mark img{
   display:block;
-  width:100% !important;
+  width:auto !important;
   height:auto !important;
   max-width:100%;
-  max-height:none;
+  max-height:64px;
   margin:0 !important;
   aspect-ratio:600 / 106;
   object-fit:contain;
+  object-position:left center;
   background:transparent !important;
   filter:none;
-}
-
-@media (max-width: 700px) {
-  footer.sj63-footer a.sj63-ontario-mark,
-  .sj63-footer-col a.sj63-ontario-mark {
-    max-width: 80%;
-  }
 }
