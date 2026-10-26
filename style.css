@@ -1669,10 +1669,3 @@ section[id],
 article[id]{
   scroll-margin-top:96px;
 }
-
-@media(max-width:1320px){
-  html.nav-open,
-  body.nav-open{
-    overflow:hidden;
-  }
-}

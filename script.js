@@ -12,9 +12,8 @@ function setMenuOpen(open) {
   menuButton.classList.toggle('is-open', next);
   menuButton.setAttribute('aria-expanded', next ? 'true' : 'false');
   menuButton.setAttribute('aria-label', next ? 'Close menu' : 'Menu');
-  menuButton.textContent = next ? '✕' : '☰';
-  document.body.classList.toggle('nav-open', next);
-  document.documentElement.classList.toggle('nav-open', next);
+  document.body.classList.remove('nav-open');
+  document.documentElement.classList.remove('nav-open');
 }
 
 function closeMenu() {
