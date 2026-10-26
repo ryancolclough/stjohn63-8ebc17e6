@@ -353,3 +353,17 @@ nav a.active{
   }
 }
 
+/* Keep hash targets below the sticky header (88px, 78px on small screens). */
+main[id],
+section[id],
+article[id]{
+  scroll-margin-top:96px;
+}
+
+@media(max-width:1320px){
+  html.nav-open,
+  body.nav-open{
+    overflow:hidden;
+  }
+}
+
