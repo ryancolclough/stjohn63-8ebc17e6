@@ -412,6 +412,16 @@
   font-size:15px;
   line-height:1.55;
 }
+.distinguished-brethren .bio-toggle a{
+  display:inline-block;
+  margin-top:10px;
+  color:var(--brass);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.distinguished-brethren .bio-toggle a:hover{
+  color:var(--brass-soft);
+}
 .military-service{
   margin-top:72px;
   padding-top:40px;
