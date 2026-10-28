@@ -334,7 +334,28 @@
     }
   
 /* V7 CURRENT OFFICERS GRID ONLY */
-.officers-home-section{padding-top:88px;padding-bottom:88px;}
+.officers-home-section{
+  position:relative;
+  isolation:isolate;
+  padding-top:88px;
+  padding-bottom:88px;
+  background:#040708;
+}
+.officers-home-section::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  background:#040708;
+}
+.wm-feature{
+  width:min(100%,420px);
+  margin:0 auto 36px;
+}
 .officers-heading-row{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:34px;}
 .section-kicker{font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--brass);font-size:.78rem;margin-bottom:10px;}
 .home-section-title{font-size:clamp(2rem,4vw,3.45rem);}
@@ -347,6 +368,7 @@
 .home-officer-card .officer-lineage{margin-top:7px;color:var(--muted);font-style:italic;font-size:.72rem;line-height:1.45;text-wrap:balance;}
 @media(max-width:1100px){.home-officers-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:720px){.home-officers-grid{grid-template-columns:repeat(2,1fr);gap:22px}.officers-heading-row{display:block}.home-officer-card h3{font-size:.98rem}.home-officer-card p{font-size:.76rem}.home-officer-card .officer-lineage{font-size:.68rem;line-height:1.4;}}
+.home-officers-grid.officer-pairs{grid-template-columns:repeat(2,minmax(0,1fr));}
 
 .distinguished-draft{
   margin:12px 0 0;
@@ -369,30 +391,43 @@
   margin-top:36px;
 }
 .distinguished-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
-.distinguished-brethren .bio-toggle{
+.distinguished-brethren .bio-toggle,
+.officers-home-section .wm-feature .bio-toggle{
   margin-top:14px;
   text-align:left;
 }
-.distinguished-brethren .bio-toggle > summary{
+.distinguished-brethren .bio-toggle > summary,
+.officers-home-section .wm-feature .bio-toggle > summary{
   padding:12px 14px;
   color:#f4efe5;
   font-family:Arial,sans-serif;
   font-size:15px;
   letter-spacing:.04em;
 }
-.distinguished-brethren .bio-toggle p{
+.distinguished-brethren .bio-toggle p,
+.officers-home-section .wm-feature .bio-toggle p{
   margin:0;
   color:#ddd3c1;
   font-family:Georgia,'Times New Roman',serif;
   font-size:15px;
   line-height:1.55;
 }
+.military-service{
+  margin-top:72px;
+  padding-top:40px;
+  border-top:1px solid rgba(200,164,93,.28);
+}
+.military-service .home-section-title{
+  margin:0 0 28px;
+  line-height:1.05;
+}
 @media(max-width:1100px){
   .distinguished-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 @media(max-width:720px){
   .distinguished-grid{grid-template-columns:1fr;}
-  .distinguished-brethren .bio-toggle > summary{padding:14px;}
+  .distinguished-brethren .bio-toggle > summary,
+  .officers-home-section .wm-feature .bio-toggle > summary{padding:14px;}
 }
 
 .honour-roll-heading{
