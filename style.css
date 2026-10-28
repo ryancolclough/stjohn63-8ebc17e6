@@ -21,6 +21,7 @@
 
 html{
   scroll-behavior:smooth;
+  background-color:#040708;
 }
 .audio-btn {
   background: rgba(180, 140, 70, 0.12);
@@ -41,7 +42,7 @@ html{
   transform: translateY(-2px);
 }
 body{
-  background:var(--black);
+  background-color:#040708;
   color:var(--cream);
   font-family:Inter,Arial,sans-serif;
 }

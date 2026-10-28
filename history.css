@@ -21,10 +21,11 @@
 
 html{
   scroll-behavior:smooth;
+  background-color:#040708;
 }
 
 body{
-  background:var(--black);
+  background-color:#040708;
   color:var(--cream);
   font-family:Inter,Arial,sans-serif;
 }
