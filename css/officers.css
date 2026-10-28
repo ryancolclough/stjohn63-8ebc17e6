@@ -13,11 +13,15 @@
     }
 
     *{box-sizing:border-box}
+    html{
+      background-color:#040708;
+    }
     body{
       margin:0;
       background:
         radial-gradient(circle at 50% 0%, rgba(188,145,67,.16), transparent 34%),
         linear-gradient(180deg,#050505 0%,#090909 38%,#030303 100%);
+      background-color:#040708;
       color:var(--text);
       font-family: Georgia, 'Times New Roman', serif;
     }
@@ -510,7 +514,7 @@ body::after {
 
 html,
 body {
-  background-color: #020406;
+  background-color: #040708;
 }
 
 body {
