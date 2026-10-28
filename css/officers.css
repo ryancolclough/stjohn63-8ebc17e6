@@ -253,6 +253,46 @@
     }
     .inner{padding:4px 18px 18px}
     .archive-note{color:var(--muted);line-height:1.6;margin:12px 6px 18px}
+    .title-explainer{
+      margin-top:34px;
+      padding:28px 26px 8px;
+      border-top:1px solid rgba(200,164,93,.22);
+    }
+    .title-explainer h2{
+      margin:0 0 12px;
+      color:#f3dfaa;
+      font-size:clamp(1.25rem,2.4vw,1.7rem);
+      font-weight:500;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .title-explainer p{
+      margin:0 0 16px;
+      max-width:760px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.65;
+    }
+    .title-explainer ul{
+      margin:0 0 18px;
+      padding:0 0 0 1.2em;
+      max-width:760px;
+    }
+    .title-explainer li{
+      margin:0 0 12px;
+      color:#ddd3c1;
+      font-size:16px;
+      line-height:1.6;
+    }
+    .title-explainer li strong{
+      color:#f3dfaa;
+      font-weight:700;
+    }
+    @media(max-width:560px){
+      .title-explainer{margin-top:26px;padding:22px 2px 0}
+      .title-explainer h2{letter-spacing:.06em}
+      .title-explainer p,.title-explainer li{font-size:15px}
+    }
     .decade{border-color:rgba(200,164,93,.17);background:rgba(0,0,0,.2)}
     .decade>summary{padding:18px 20px;color:#d8c28b;text-transform:uppercase;letter-spacing:.11em;font-size:16px}
     .year{border-color:rgba(255,255,255,.08);background:rgba(255,255,255,.025)}
