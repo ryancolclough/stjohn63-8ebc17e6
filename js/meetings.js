@@ -7,7 +7,7 @@
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
   var TIME_ZONE = "America/Toronto";
   var PLACE = "55 Bridge Street, Carleton Place";
-  var SKIP_MONTHS = { 6: true, 7: true, 8: true };
+  var FALLBACK = "Next meeting date to be announced";
   var WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   function partsOf(date) {
@@ -41,88 +41,117 @@
     return new Date(Date.UTC(year, month - 1, day, 17, 0, 0));
   }
 
-  function weekdayIndex(year, month, day) {
-    var label = partsOf(civilInstant(year, month, day)).weekday;
-    return WEEKDAYS.indexOf(label);
+  function dateKey(year, month, day) {
+    return year * 10000 + month * 100 + day;
   }
 
-  function secondWednesday(year, month) {
-    var first = weekdayIndex(year, month, 1);
-    var firstWednesday = 1 + ((3 - first + 7) % 7);
-    return firstWednesday + 7;
-  }
-
-  function firstEligible(year, month) {
-    while (SKIP_MONTHS[month]) {
-      month += 1;
-      if (month > 12) {
-        month = 1;
-        year += 1;
-      }
-    }
-    return { year: year, month: month };
-  }
-
-  function nextEligibleMonth(year, month) {
-    month += 1;
-    if (month > 12) {
-      month = 1;
-      year += 1;
-    }
-    return firstEligible(year, month);
-  }
-
-  function compareDate(year, month, day, otherYear, otherMonth, otherDay) {
-    if (year !== otherYear) return year > otherYear ? 1 : -1;
-    if (month !== otherMonth) return month > otherMonth ? 1 : -1;
-    if (day !== otherDay) return day > otherDay ? 1 : -1;
-    return 0;
-  }
-
-  function nextRegularMeeting(now) {
-    var when = now instanceof Date ? now : new Date(now);
-    var today = partsOf(when);
-    var cursor = firstEligible(today.year, today.month);
-
-    for (var i = 0; i < 16; i += 1) {
-      var day = secondWednesday(cursor.year, cursor.month);
-      var order = compareDate(cursor.year, cursor.month, day, today.year, today.month, today.day);
-      if (order > 0) {
-        return { year: cursor.year, month: cursor.month, day: day, tonight: false };
-      }
-      if (order === 0 && today.hour < 22) {
-        return { year: cursor.year, month: cursor.month, day: day, tonight: true };
-      }
-      cursor = nextEligibleMonth(cursor.year, cursor.month);
-    }
-    return null;
+  function parseISODate(value) {
+    var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value || "");
+    if (!match) return null;
+    var year = Number(match[1]);
+    var month = Number(match[2]);
+    var day = Number(match[3]);
+    if (month < 1 || month > 12 || day < 1 || day > 31) return null;
+    var seen = partsOf(civilInstant(year, month, day));
+    if (seen.year !== year || seen.month !== month || seen.day !== day) return null;
+    return { year: year, month: month, day: day };
   }
 
   function formatDate(meeting) {
+    var parts = meeting.year ? meeting : parseISODate(meeting.date);
+    if (!parts) return "";
     return new Intl.DateTimeFormat("en-US", {
       timeZone: TIME_ZONE,
       weekday: "long",
       month: "long",
       day: "numeric",
       year: "numeric"
-    }).format(civilInstant(meeting.year, meeting.month, meeting.day));
+    }).format(civilInstant(parts.year, parts.month, parts.day));
   }
 
-  function meetingLine(meeting) {
-    if (!meeting) return "";
-    if (meeting.tonight) return "Tonight, 7:30 PM · " + PLACE;
-    return formatDate(meeting) + " · 7:30 PM · " + PLACE;
+  function formatTime(value) {
+    var match = /^(\d{2}):(\d{2})$/.exec(value || "");
+    if (!match) return "";
+    var hour = Number(match[1]);
+    var minute = match[2];
+    if (hour > 23 || Number(minute) > 59) return "";
+    var suffix = hour >= 12 ? "PM" : "AM";
+    var hour12 = hour % 12;
+    if (hour12 === 0) hour12 = 12;
+    return hour12 + ":" + minute + "\u00A0" + suffix;
   }
 
-  function dateKey(year, month, day) {
-    return year * 10000 + month * 100 + day;
+  function selectNext(list, now) {
+    var when = now instanceof Date ? now : new Date(now);
+    var today = partsOf(when);
+    var todayKey = dateKey(today.year, today.month, today.day);
+    var upcoming = [];
+    (list || []).forEach(function (entry) {
+      if (!entry) return;
+      var parts = parseISODate(entry.date);
+      if (!parts) return;
+      var key = dateKey(parts.year, parts.month, parts.day);
+      if (key < todayKey) return;
+      upcoming.push(entry);
+    });
+    upcoming.sort(function (a, b) {
+      var aKey = dateKeyFrom(a.date);
+      var bKey = dateKeyFrom(b.date);
+      if (aKey !== bKey) return aKey - bKey;
+      return (b.special === true ? 1 : 0) - (a.special === true ? 1 : 0);
+    });
+    return upcoming.length ? upcoming[0] : null;
+  }
+
+  function dateKeyFrom(value) {
+    var parts = parseISODate(value);
+    return parts ? dateKey(parts.year, parts.month, parts.day) : 0;
+  }
+
+  function meetingLine(meeting, location) {
+    if (!meeting) return FALLBACK;
+    var pieces = [formatDate(meeting)];
+    var time = formatTime(meeting.time);
+    if (time) pieces.push(time);
+    pieces.push(meeting.location || location || PLACE);
+    return pieces.filter(Boolean).join("\n");
+  }
+
+  function headingFor(meeting) {
+    if (meeting && meeting.special) return meeting.label || "Emergent Meeting";
+    return "Next Regular Meeting";
+  }
+
+  function applyMeeting(targets, data, now) {
+    if (!targets || !targets.line) return null;
+    var list = data && data.meetings ? data.meetings : [];
+    var location = data && data.location;
+    var meeting = selectNext(list, now || new Date());
+    targets.line.textContent = meetingLine(meeting, location);
+    if (targets.title) targets.title.textContent = headingFor(meeting);
+    return meeting;
+  }
+
+  function loadNextMeeting(targets, now) {
+    if (!targets || !targets.line || typeof fetch !== "function") return;
+    fetch("assets/meetings.json", { credentials: "same-origin" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("meetings");
+        return response.json();
+      })
+      .then(function (data) {
+        applyMeeting(targets, data, now || new Date());
+      })
+      .catch(function () {
+        /* Keep the lodge rule already written in the page. */
+      });
   }
 
   function eventHasPassed(dateStr, now) {
-    var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr || "");
-    if (!match) return false;
+    var parts = parseISODate(dateStr);
+    if (!parts) return false;
     var today = partsOf(now instanceof Date ? now : new Date(now));
-    return dateKey(Number(match[1]), Number(match[2]), Number(match[3])) < dateKey(today.year, today.month, today.day);
+    return dateKey(parts.year, parts.month, parts.day) < dateKey(today.year, today.month, today.day);
   }
 
   function hidePastEvents(root, now) {
@@ -134,10 +163,18 @@
   }
 
   return {
-    nextRegularMeeting: nextRegularMeeting,
+    TIME_ZONE: TIME_ZONE,
+    FALLBACK: FALLBACK,
+    partsOf: partsOf,
+    selectNext: selectNext,
     meetingLine: meetingLine,
+    headingFor: headingFor,
+    applyMeeting: applyMeeting,
+    loadNextMeeting: loadNextMeeting,
     formatDate: formatDate,
+    formatTime: formatTime,
     eventHasPassed: eventHasPassed,
-    hidePastEvents: hidePastEvents
+    hidePastEvents: hidePastEvents,
+    WEEKDAYS: WEEKDAYS
   };
 });
