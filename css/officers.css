@@ -348,6 +348,52 @@
 @media(max-width:1100px){.home-officers-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:720px){.home-officers-grid{grid-template-columns:repeat(2,1fr);gap:22px}.officers-heading-row{display:block}.home-officer-card h3{font-size:.98rem}.home-officer-card p{font-size:.76rem}.home-officer-card .officer-lineage{font-size:.68rem;line-height:1.4;}}
 
+.distinguished-draft{
+  margin:12px 0 0;
+  max-width:640px;
+  color:var(--muted);
+  font-family:Arial,sans-serif;
+  font-size:.92rem;
+  line-height:1.5;
+}
+.distinguished-group{
+  margin:8px 0 18px;
+  color:#f3dfaa;
+  font-size:1.05rem;
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.distinguished-brethren h3.distinguished-group:not(:first-of-type){
+  margin-top:36px;
+}
+.distinguished-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+.distinguished-brethren .bio-toggle{
+  margin-top:14px;
+  text-align:left;
+}
+.distinguished-brethren .bio-toggle > summary{
+  padding:12px 14px;
+  color:#f4efe5;
+  font-family:Arial,sans-serif;
+  font-size:15px;
+  letter-spacing:.04em;
+}
+.distinguished-brethren .bio-toggle p{
+  margin:0;
+  color:#ddd3c1;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:15px;
+  line-height:1.55;
+}
+@media(max-width:1100px){
+  .distinguished-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:720px){
+  .distinguished-grid{grid-template-columns:1fr;}
+  .distinguished-brethren .bio-toggle > summary{padding:14px;}
+}
+
 
     /* ================================
        SUBTLE PAGE ANIMATIONS - V11
