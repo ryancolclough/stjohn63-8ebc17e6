@@ -395,6 +395,49 @@
   .distinguished-brethren .bio-toggle > summary{padding:14px;}
 }
 
+.honour-roll-heading{
+  margin:36px 0 12px;
+  color:#f3dfaa;
+  font-size:.95rem;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.honour-roll{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid rgba(200,164,93,.22);
+}
+.honour-roll li{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:4px 18px;
+  padding:13px 2px;
+  border-bottom:1px solid rgba(200,164,93,.16);
+  color:#ddd3c1;
+  font-size:16px;
+  line-height:1.45;
+}
+.honour-roll strong{
+  color:#f3dfaa;
+  font-weight:700;
+}
+.honour-roll li span:last-child{
+  color:var(--muted);
+  font-family:Arial,sans-serif;
+  font-size:.9rem;
+}
+@media(max-width:560px){
+  .honour-roll li{
+    flex-direction:column;
+    gap:2px;
+    padding:12px 0;
+  }
+}
+
 
     /* ================================
        SUBTLE PAGE ANIMATIONS - V11
