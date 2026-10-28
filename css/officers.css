@@ -180,6 +180,11 @@
       line-height:1.65;
       font-size:16px;
     }
+    .section-title a{
+      color:var(--brass-soft);
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
     .section-mark{
       color:rgba(200,164,93,.36);
       font-size:84px;
