@@ -1525,43 +1525,6 @@ footer a:hover{
   color:var(--brass2);
 }
 
-.legal-page .table-scroll{
-  overflow-x:auto;
-  margin:8px 0 28px;
-}
-
-.legal-page table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:520px;
-}
-
-.legal-page th,
-.legal-page td{
-  text-align:left;
-  padding:10px 12px;
-  border-bottom:1px solid rgba(200,164,93,.22);
-  vertical-align:top;
-}
-
-.legal-page th{
-  color:var(--brass2);
-  font-size:.78rem;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-.legal-page td .master-note{
-  margin:6px 0 0;
-  font-size:.92rem;
-  color:#b7ad9e;
-}
-
-.legal-page tr.master-gap td{
-  color:#9a9184;
-  font-style:italic;
-}
-
 .not-found-links{
   display:flex;
   flex-wrap:wrap;
