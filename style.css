@@ -217,7 +217,7 @@ nav a.active{
 
   width:44px;
 
-  height:44px;
+  height:42px;
 
   font-size:1.35rem;
 
@@ -1616,7 +1616,7 @@ footer a:hover{
   font-size:.94rem;
 }
 
-@media(max-width:1499px){
+@media(max-width:1320px){
   .header-btn{
     display:none;
   }
@@ -1643,14 +1643,6 @@ footer a:hover{
 
   nav.open{
     display:flex;
-  }
-
-  nav a{
-    min-height:44px;
-    display:flex;
-    align-items:center;
-    font-size:1rem;
-    letter-spacing:.04em;
   }
 }
 
