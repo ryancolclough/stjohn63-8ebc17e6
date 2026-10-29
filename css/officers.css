@@ -432,6 +432,27 @@
   margin:0 0 28px;
   line-height:1.05;
 }
+.military-page{
+  padding-top:48px;
+  padding-bottom:88px;
+}
+.military-page .military-service{
+  margin-top:0;
+  padding-top:0;
+  border-top:0;
+}
+.military-intro{
+  max-width:640px;
+  margin:0 0 28px;
+  color:#ddd3c1;
+  font-size:1.05rem;
+  line-height:1.65;
+}
+.distinguished-brethren .distinguished-draft a{
+  color:var(--brass-soft);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
 @media(max-width:1100px){
   .distinguished-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
