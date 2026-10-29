@@ -200,6 +200,11 @@
   padding-top:28px;
 }
 
+.honour-cards .distinguished-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  max-width:820px;
+}
+
 .honour-cards h2{
   margin:0 0 12px;
   color:#e6d3a2;
@@ -269,39 +274,103 @@ a.archive-panel:hover{
 }
 
 @media(max-width:900px){
+  .honour-features{
+    grid-template-columns:1fr;
+  }
+
+  .archive-row{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:700px){
   .honour-hero{
     grid-template-columns:1fr;
     min-height:0;
   }
 
   .honour-hero-mark{
-    min-height:220px;
-    padding:36px 20px;
+    min-height:210px;
+    padding:28px 20px 24px;
+  }
+
+  .honour-hero-mark img{
+    width:min(168px,42vw);
   }
 
   .honour-hero-copy{
-    padding:36px 22px 42px;
+    padding:28px 20px 36px;
   }
 
-  .honour-features,
-  .archive-row{
-    grid-template-columns:1fr;
+  .honour-hero h1{
+    font-size:clamp(2rem,10vw,2.6rem);
+    max-width:none;
+  }
+
+  .honour-hero p,
+  .honour-panel p,
+  .lest-note,
+  .military-intro,
+  .honour-archives > p,
+  .archive-panel span{
+    font-size:1rem;
+    line-height:1.55;
+  }
+
+  .honour-panel h2,
+  .archive-panel strong,
+  .conflict-row li{
+    font-size:1rem;
+    letter-spacing:.06em;
+  }
+
+  .honour-panel{
+    padding:22px 18px 18px;
+  }
+
+  .honour-go,
+  .honour-soon{
+    min-height:44px;
+    display:inline-flex;
+    align-items:center;
+    font-size:.875rem;
+    padding:0 2px;
   }
 
   .conflict-row{
     grid-template-columns:1fr;
-    gap:14px;
+    gap:0;
+    border-top:1px solid rgba(200,164,93,.22);
   }
 
   .conflict-row li{
     flex-direction:row;
+    align-items:center;
     justify-content:flex-start;
     text-align:left;
     gap:16px;
+    min-height:64px;
+    padding:8px 0;
+    border-bottom:1px solid rgba(200,164,93,.16);
+  }
+
+  .medal{
+    width:36px;
+    height:48px;
+  }
+
+  .honour-cards .distinguished-grid{
+    grid-template-columns:1fr;
+    max-width:none;
+  }
+
+  .archive-panel{
+    min-height:120px;
+    padding:16px 14px;
   }
 
   .honour-band{
-    width:min(100% - 36px,1180px);
-    padding:40px 0;
+    width:min(100% - 32px,1180px);
+    padding:32px 0;
   }
 }
