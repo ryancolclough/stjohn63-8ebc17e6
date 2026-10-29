@@ -18,6 +18,7 @@
   <meta name="twitter:description" content="History of St. John's Lodge No. 63 in Carleton Place, Ontario, from its 1843 charter through the lodge timeline and historical records.">
   <meta name="twitter:image" content="https://stjohns63.ca/assets/stjohn63-wax-seal.png">
   <link rel="stylesheet" href="history.css">
+  <link rel="stylesheet" href="css/history-layout.css">
   <link rel="stylesheet" href="css/footer.css">
 </head>
 
@@ -88,6 +89,12 @@
         History
 
       </a>
+
+      <a href="impact.html">
+
+        Community Impact
+
+      </a>
        <a href="faq.html">
 
         Questions
@@ -130,94 +137,45 @@
 </header>
 <main id="main" tabindex="-1">
 
-  <!-- HERO -->
-
-  <section class="history-hero">
-
-    <img
-      src="assets/history-hero.jpg"
-      alt="St. John's Lodge No. 63 at night"
-    >
-
-    <div class="hero-inner">
-
-      <div class="eyebrow">
-        The History Of
-      </div>
-
-      <h2>
-        St. John's<br>
-        Lodge No. 63
-      </h2>
-
-      <div class="hero-sub">
-        Serving Carleton Place<br>
-        Since 1843
-      </div>
-
-      <div class="hero-actions">
-
-        <a class="btn gold" href="#timeline">
-          Explore Our Timeline <span>◇</span>
-        </a>
-
-        <a class="btn dark" href="#records">
-          Historical Records <span>▱</span>
-        </a>
-
-      </div>
-
+  <!--
+    Town facts: Town of Carleton Place, Local History, https://carletonplace.ca/live/local-history
+    (Edmond Morphy, September 1819; Morphy's Falls; named Carleton Place in 1829).
+    Charter year 1843 and the historians: this site and https://www.stjohns63.ca/history
+    (V.W. Bro. G.A. Sandy Docker, 1993; Jim Tye, 2018; Grand Historian, 2013).
+    Not taken from the design mockup: 1818, 20 May 1847, A. Campbell, Est. 1845 or 1847,
+    militia-founder claims, or the unattributed community quotation.
+  -->
+  <section class="town-hero" aria-labelledby="town-title">
+    <div class="town-hero-copy">
+      <p class="town-kicker">Our history</p>
+      <h1 id="town-title">More than a lodge. Part of our town's story.</h1>
+      <p>Chartered in 1843, St. John's Lodge No. 63 stands among the earliest Masonic lodges named on this site, and remains a lasting part of the heritage of Carleton Place.</p>
     </div>
-
+    <div class="town-collage">
+      <img src="assets/carleton-archive.jpg" alt="Sepia illustration of Morphy's Falls, already published on this site" width="1536" height="1024">
+      <img class="seal" src="assets/wax-seal.png" alt="" width="395" height="400">
+    </div>
   </section>
 
-  <!-- INTRO -->
-
-  <section class="archive-intro">
-
-    <div class="archive-box">
-
-      <article class="intro-copy dropcap">
-
-        <p>
-          Chartered in 1843, St. John's Lodge No. 63 stands among the earliest
-          Masonic Lodges in Ontario and remains a lasting part of the heritage
-          of Carleton Place.
-        </p>
-
-        <p>
-          Through generations of social change, growth, hardship, and renewal,
-          the Lodge has served as a place of Brotherhood, moral instruction,
-          charity, and fellowship.
-        </p>
-
-        <p>
-          From its earliest meetings in the mid-19th century to the present day,
-          St. John's No. 63 has reflected the spirit of the community around it
-          — shaped by craftsmen, merchants, railway workers, veterans, farmers,
-          business owners, and civic leaders who contributed to both the Lodge
-          and the town itself.
-        </p>
-
-        <p>
-          The records preserved through these historical documents tell not only
-          the story of a Masonic Lodge, but also the story of continuity —
-          of men gathering under shared principles across nearly two centuries
-          of Ontario history.
-        </p>
-
-      </article>
-
-      <div class="archive-art">
-        <img
-          src="assets/carleton-archive.jpg"
-          alt="Historic Carleton Place"
-         width="1536" height="1024" loading="lazy">
-      </div>
-
-    </div>
-
+  <section class="town-panels" aria-label="How the town and the lodge began">
+    <article class="town-panel">
+      <h2>A town on the Mississippi</h2>
+      <p>The Town of Carleton Place records that the settlement was Morphy's Falls. In September 1819, settlement rights were issued to Edmond Morphy and his sons. The community was named Carleton Place in 1829.</p>
+    </article>
+    <article class="town-panel">
+      <h2>The lodge is chartered</h2>
+      <p>This site dates the lodge's charter to 1843. The lodge's own history page describes the written history as running from 1843 to 2018.</p>
+    </article>
+    <article class="town-panel">
+      <h2>Brotherhood and charity</h2>
+      <p>Through change and renewal, the lodge has served as a place of brotherhood, moral instruction, charity, and fellowship.</p>
+    </article>
   </section>
+
+  <div class="town-actions">
+    <a href="#timeline">Explore our full history</a>
+    <a href="#records">Historical records</a>
+  </div>
 
   <!-- TIMELINE -->
 
@@ -438,6 +396,7 @@
             The foundational record covering the origins and early
             development of the Lodge from its charter in 1843 through
             the late 20th century.
+            V.W. Bro. G.A. Sandy Docker began this history in 1993. The lodge site says it reaches back to before the Grand Lodge of Canada was formed.
           </p>
 
           <div class="pages">
@@ -473,6 +432,7 @@
           <p>
             A continuation of the story, documenting the Lodge's journey
             through the next quarter century and into the modern era.
+            In 2018, Lodge Historian Jim Tye added The Next 25 Years, 1993–2018, to mark the lodge's 175th anniversary.
           </p>
 
           <div class="pages">
@@ -508,6 +468,7 @@
           <p>
             Supplementary historical material and references providing
             additional context and archival information.
+            The lodge site describes this as an overview written by the Grand Historian in 2013.
           </p>
 
           <div class="pages">
@@ -531,7 +492,12 @@
 
   </section>
 
-  <!-- FOOTER -->
+  <section class="join-band" aria-labelledby="join-title">
+    <h2 id="join-title">The record continues</h2>
+    <p>Men interested in the lodge, and visiting brethren, can write to the Secretary. The lodge meets at 55 Bridge Street, Carleton Place, ON K7C 2V2.</p>
+    <p><a href="mailto:secretary@stjohns63.ca">secretary@stjohns63.ca</a><br><a href="tel:+1-613-257-4863">(613) 257-4863</a></p>
+    <a class="btn" href="contact.html">Contact the lodge</a>
+  </section>
 
   <section class="closing">
 
@@ -564,6 +530,7 @@
         <a href="contact.html">JOINING</a>
         <a href="index.html#freemasonry">VALUES</a>
         <a href="history.html">HISTORY</a>
+        <a href="impact.html">COMMUNITY IMPACT</a>
         <a href="faq.html">FAQ</a>
         <a href="contact.html">CONTACT</a>
       </div>

@@ -1,0 +1,171 @@
+/* History page refresh. Existing timeline and records stay.
+   Town facts: Town of Carleton Place, Local History,
+   https://carletonplace.ca/live/local-history
+   Lodge year and historians: this site and https://www.stjohns63.ca/history */
+
+.town-hero{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:36px;
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto;
+  padding:56px 0 28px;
+  align-items:center;
+}
+
+.town-kicker{
+  margin:0 0 12px;
+  color:#e6d3a2;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.78rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.town-hero h1{
+  margin:0 0 16px;
+  color:#f1ede7;
+  font-family:Cinzel,Georgia,serif;
+  font-weight:500;
+  font-size:clamp(2rem,4vw,3.4rem);
+  line-height:1.08;
+}
+
+.town-hero-copy > p{
+  margin:0;
+  max-width:38rem;
+  color:#ddd3c1;
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:1.08rem;
+  line-height:1.6;
+}
+
+.town-collage{
+  display:grid;
+  grid-template-columns:1.4fr .7fr;
+  gap:12px;
+  align-items:center;
+}
+
+.town-collage img{
+  width:100%;
+  height:auto;
+  border:1px solid rgba(200,164,93,.35);
+  filter:sepia(.45);
+}
+
+.town-collage .seal{
+  width:min(160px,100%);
+  margin:0 auto;
+  border:0;
+  filter:sepia(.2);
+}
+
+.town-panels{
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto 12px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.town-panel{
+  padding:22px 18px;
+  border:1px solid rgba(200,164,93,.28);
+  background:rgba(10,12,14,.55);
+}
+
+.town-panel h2{
+  margin:0 0 10px;
+  color:#e6d3a2;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.92rem;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.town-panel p{
+  margin:0;
+  color:#cfc6b8;
+  font-size:1rem;
+  line-height:1.55;
+}
+
+.town-actions{
+  width:min(1180px,calc(100% - 40px));
+  margin:8px auto 36px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.town-actions a,
+.join-band a.btn{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  padding:0 18px;
+  border:1px solid rgba(200,164,93,.45);
+  color:#e6d3a2;
+  font-family:Cinzel,Georgia,serif;
+  font-size:.78rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+}
+
+.join-band{
+  width:min(1180px,calc(100% - 40px));
+  margin:0 auto 48px;
+  padding:28px 24px;
+  border:1px solid rgba(200,164,93,.28);
+  background:#100e0c;
+}
+
+.join-band h2{
+  margin:0 0 10px;
+  color:#e6d3a2;
+  font-family:Cinzel,Georgia,serif;
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:1.4rem;
+}
+
+.join-band p{
+  margin:0 0 14px;
+  max-width:40rem;
+  color:#ddd3c1;
+  font-size:1rem;
+  line-height:1.55;
+}
+
+.record-source{
+  margin-top:8px;
+  color:#b7ad9e;
+  font-size:.95rem;
+  line-height:1.45;
+}
+
+@media(max-width:800px){
+  .town-hero,
+  .town-panels{
+    grid-template-columns:1fr;
+  }
+
+  .town-hero{
+    padding-top:32px;
+  }
+
+  .town-hero h1,
+  .town-hero-copy > p,
+  .town-panel p,
+  .join-band p{
+    font-size:1rem;
+  }
+
+  .town-hero h1{
+    font-size:clamp(1.8rem,8vw,2.4rem);
+  }
+}
