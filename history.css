@@ -198,7 +198,7 @@ nav a.active{
 
   width:44px;
 
-  height:44px;
+  height:42px;
 
   font-size:1.35rem;
 
@@ -325,7 +325,7 @@ nav a.active{
   object-fit:contain;
 }
 
-@media(max-width:1499px){
+@media(max-width:1320px){
   .header-btn{
     display:none;
   }
@@ -351,13 +351,6 @@ nav a.active{
 
   nav.open{
     display:flex;
-  }
-
-  nav a{
-    min-height:44px;
-    display:flex;
-    align-items:center;
-    font-size:1rem;
   }
 }
 
